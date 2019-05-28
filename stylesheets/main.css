@@ -1,0 +1,288 @@
+/* ------ Geral -------*/
+
+body {
+  transition: all .5s;
+  background-color: #e9f2e9 }
+body.inicial { background-color: #010440 }
+.flex { display: flex }
+
+/* ------ Textos ------ */
+
+h1.titulo {
+  font-family: "Barrio", sans-serif;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  display: inline-block; }
+small {
+  margin-bottom: 5px;
+  font-size: .75rem; }
+small a { font-size: inherit!important }
+ol {
+  margin: 0 0 1.5em;
+  padding: 0;
+  counter-reset: item }
+ol > li {
+  margin: 0;
+  padding-left: 22px;
+  list-style-type: none;
+  counter-increment: item;
+}
+ol > li:before {
+  display: inline-block;
+  width: 1em;
+  padding-right: 0.5em;
+  font-weight: bold;
+  text-align: right;
+  content: counter(item, lower-alpha) ".";
+}
+.invalid-feedback { display: none }
+
+/* ------ Seções ------ */
+
+#inicial { color: white }
+#inicial h1.titulo { font-size: 4rem; }
+#inicial img {
+  margin: 1rem;
+  float: right;
+  clear: none;
+  width: 20% }
+.cabecalho .titulo { color: #010440 }
+.secao { color: #444444 }
+
+@media (max-width:767px) {
+  #inicial img { width: 30% }
+}
+
+/* ------ Botões ------ */
+
+main .btn {
+  cursor: pointer!important;
+  margin-right: .5rem;
+  margin-bottom: 1rem; }
+main .btn-link {
+  line-height: 1;
+  text-transform: underline!important;
+  margin: 0!important;
+  padding: 0!important }
+main a[data-toggle="popover"]{
+  background-color: transparent;
+  border: none;
+  color: black;
+  margin-left: 5px;
+  font-size: 1.2rem;
+  cursor: pointer; }
+main a.material-icons { font-size: 1rem!important }
+
+.navegacao .btn {
+  box-shadow: 3px 3px 3px rgba(0,0,0,.1);
+  border-color: transparent!important;
+  transition: all .25s }
+.navegacao .btn-lg { padding: .75rem 1.5rem }
+.navegacao .btn:hover,
+.navegacao .btn:focus {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 1px rgba(0,0,0,.1); }
+
+.navegacao .btn-primary {
+  background-color: #d7586f!important }
+.navegacao .btn-primary:hover {
+  background-color: #c14f63!important; }
+
+.navegacao .btn-outline-primary {
+  background-color: white!important;
+  color: black!important; }
+.btn-outline-primary {
+  background-color: #e5e5e5!important; }
+
+.btnPosicaoOriginal {
+  background-color: #8cb067;
+  color: white;
+  margin: .2rem;
+  padding: .5rem;
+  z-index: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .25s;
+  position: absolute;
+  right: 1.2rem;
+  top: 2.4rem;
+  box-shadow: 3px 3px 3px rgba(0,0,0,.1) }
+.btnPosicaoOriginal:hover {
+  transform: translateY(2px);
+  background-color: #7e9e5c;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.1) }
+
+.btnResultado { margin: 0 }
+
+input {
+  max-width: 200px; }
+input[type=radio] {
+  position: absolute!important;
+  margin: 15px;
+  visibility: hidden; }
+input[type=radio] ~ label {
+  cursor: pointer;
+  border: 3px solid transparent }
+input[type=radio] ~ label img { border-radius: .5rem }
+input[type=radio] ~ label:hover,
+input[type=radio]:checked ~ label {
+  border-radius: .5rem;
+  border-color: #010440 }
+
+/* ------ Modais ------ */
+
+.modal-content {
+  padding: 1rem;
+  background-color: #e9f2e9 }
+.modal-header {
+  border-bottom: 0;
+}
+.modal-body { padding-top: 0 }
+.modal-footer { border-top: none }
+.modal-footer .btn { margin-bottom: 0 }
+#casosDetalhados img {
+  max-width: 100%;
+  margin: auto;
+  display: block;
+}
+
+/* ------ Tabela ------ */
+
+.div-thumb button {
+  line-height: 1.1;
+  margin-right: 5px!important }
+.tabela-thumb {
+  width: 100px;
+  position: relative }
+.tabela-thumb img {
+  width: 100%;
+  height: auto }
+.tabela-thumb .localizador {
+  position: absolute;
+  top: 0; left: 0;
+  width: 50px;
+  height: 25px;
+  background-color: #f2d16d;
+  mix-blend-mode: multiply }
+
+div.tabela {
+  max-height: calc(3.5rem * 6);
+  overflow: scroll;
+  background-color: white!important;
+  position: relative;
+  margin-top: 2rem;
+  width: 100% }
+table {
+  border-collapse: collapse;
+  background-color: white;
+  max-width: 100% }
+td, th {
+  height: 3.5rem;
+  font-size: 10px;
+  background-color: white;
+  transition: .1s all;
+  text-align: center;
+  border: 1px solid #ccc }
+thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #eaf7fc }
+thead th:first-child {
+  left: 0;
+  z-index: 1; }
+tbody th {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  left: 0;
+  background: #fcf6e2 }
+
+.row-resultado, .row-resultado th { background-color: #f2d16d }
+.row-resultado {padding: .5rem; padding-right: 2px}
+.col-resultado { background-color: #94d7f2; padding: .5rem; padding-left: 2px }
+.cell-resultado {
+  color: white;
+  background-color: #8cb067; }
+
+/* ------ Media ------ */
+
+/* Ajustes para Layout empilhado */
+@media (min-width:992px) {
+  .div-thumb { margin-left: 1.5rem }
+  .div-thumb button { margin-right: 0!important }
+  .btnPosicaoOriginal {
+    position: relative;
+    top: 0; right: 0 }
+  td, th { font-size: 14px }
+}
+
+/* @page {
+  size: A4 portrait;
+  margin: 10mm;
+} */
+
+@media print {
+  #conteudoPrincipal { padding: 0!important; margin: 10px!important }
+  #resultado img { width: auto!important }
+  #resultado .text-muted {
+    float: left;
+    max-width: 50%;
+  }
+  .cabecalho img {
+    float: right;
+    margin-left: -25px; }
+  .titulo { padding-top: 5mm }
+  nav, footer { display: none }
+  nav img { filter: invert(100%) }
+  form, .navegacao { display: none }
+  div.tabela {
+    display: block;
+    margin-left: -5px;
+    margin-top: 15px;
+    max-height: 100%;
+    position: relative }
+  thead th, tbody th { position: relative }
+  small {
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+  .tabela-normal {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .tabela-normal td, .tabela-normal th {
+    font-size: 8pt;
+    padding: .35rem 1.3rem;
+    flex-grow: 1;
+    height: auto!important;
+    min-width: 100%!important }
+  #tabelaScroll {
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+  .ilustra-final {
+    position: fixed!important;
+    top: 20mm;
+    right: 10mm;
+    width: auto;
+    height: 44mm;
+  }
+  .titulo:after {
+    content: "apps.univesp.br/o-normal-assusta";
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10pt;
+    margin-left: 15px;
+  }
+  .row-resultado,
+  .row-resultado th,
+  .col-resultado {
+    background-color: #efefef!important;
+    -webkit-print-color-adjust: exact;
+  }
+  .cell-resultado {
+    border: 2px solid black;
+    color: black;
+    background-color: transparent;
+   }
+}

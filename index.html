@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content="assets/fb-share.png">
+  <meta name="author" content="Univesp">
+
+  <meta name="description" property="og:description"
+  content="No cálculo e interpretação de dados estatísticos, tabelas como a Tabela Normal são ferramentas indispensáveis. Este recurso ensina a utilizar esse tipo de tabela, ao mesmo tempo que automatiza sua consulta.">
+
+  <meta name="keywords" content="tabela normal, Estatística, distribuição de probabilidade">
+
+  <title>Univesp | O normal assusta?</title>
+
+  <link rel="shortcut icon" href="http://apps.univesp.br/common/favicon.ico" type="image/x-icon"/>
+
+  <!-- Arquivos Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+  <!-- Ícones por Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <!-- Ícones por Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Tipografia institucional por Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Barrio:400|Open+Sans:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Compartilhamento por jsSocials -->
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-minima.css" />
+
+  <!-- Animate CSS. Descomente se for utilizar. Caso contrário, remova. -->
+  <!-- <link rel="stylesheet" href="https://apps.univesp.br/common/animate.css"> -->
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="https://apps.univesp.br/common/rea-geral-2.0.css">
+  <link rel="stylesheet" href="stylesheets/nav_footer.css">
+  <link rel="stylesheet" href="stylesheets/main.css">
+
+</head>
+
+<body class="flex flex-column inicial">
+
+  <!-- CABEÇALHO -->
+
+  <nav>
+    <div class="container flex justify-content-end">
+
+      <div class="logo">
+
+        <a class="pularNavegacao" href="#conteudoPrincipal">Pular para Conteúdo Principal</a>
+        <a href="https://univesp.br/" target="_blank">
+          <img src="https://apps.univesp.br/common/traco-negativa.svg" alt="Link para site institucional. Logotipo da universidade formado pela palavra Univesp em letras maiúsculas, sendo a letra V estilizada.">
+          <!-- outras opções de img src: colorida-negativa.svg, traco-positiva.svg, traco-negativa.svg -->
+        </a>
+
+      </div>
+
+      <ul class="nav justify-content-end">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons" aria-label="Opções de Compartilhamento">share</i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="sharing" id="share-buttons"></div>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- CONTEÚDO -->
+
+  <main id="conteudoPrincipal">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 cabecalho">
+          <img class="d-none d-print-block" height=100 src="https://apps.univesp.br/common/traco-positiva.svg">
+        </div>
+
+        <!-- INÍCIO DA PÁGINA INICIAL -->
+
+        <div class="secao col-12" id="inicial">
+          <h1 class="titulo btnVoltar">O Normal Assusta?</h1>
+          <img src="assets/tabela_normal-ilustra1v3.png">
+          <p><strong>Em uma vila moram duas pessoas. Uma delas assou e comeu 2 frangos.<br/> Aí vem o estatístico e diz que, naquela vila, cada pessoa comeu 1 frango.</strong><p>
+          <p>Essa é uma brincadeira feita pelo intelectual italiano Umberto Eco para falar, entre outras coisas, do risco de uma pesquisa falsear um resultado.<br/>
+          Para que a Estatística possa ajudar a representar e entender a realidade ao nosso redor, ela se cerca de ferramentas. Uma delas é a <strong>Tabela da Distribuição Normal Padronizada</strong>.<p>
+          <p>Quer experimentar?</p>
+
+          <!-- Botões -->
+          <div class="navegacao flex flex-wrap justify-content-md-start" style="margin-top:2rem">
+            <a href="assets/appsunivesp_tabelanormal.pdf" target="_blank"  class="btn btn-lg btn-outline-primary flex-grow-1 flex-md-grow-0">Acessar tabela normal</a>
+            <button type="button" class="btn btn-lg btn-outline-primary flex-grow-1 flex-md-grow-0 btnCalculoZ" data-toggle="modal" data-target="#precisoCalcularZ">Preciso calcular Z</button>
+            <button type="button" class="btn btn-lg btn-primary flex-grow-1 flex-md-grow-0 btnDadosZ" data-toggle="modal" data-target="#jaTenhoZ">Já tenho Z</button>
+          </div>
+        </div>
+
+        <!-- FIM DA PÁGINA INICIAL -->
+
+
+
+        <!-- INÍCIO MODAIS -->
+
+        <!-- Preciso Calcular Z -->
+
+        <div class="modal fade" id="precisoCalcularZ" tabindex="-1" role="dialog" aria-labelledby="precisoCalcularZ" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <!-- Média -->
+
+                <div class="form-group row">
+                  <small class="flex align-items-center justify-content-start form-text text-muted col-12">
+                    Preencha a média
+                    <a tabindex="0" class="popover-dismiss material-icons" role="button" data-toggle="popover" data-trigger="focus" data-content="A média aritmética, ou simplesmente média, é o resultado da soma de todos os valores de um conjunto de dados dividida pelo número de observações.">info</a>
+                  </small>
+                  <label for="media" class="col-2 col-form-label">\( \mu = \)</label>
+                  <div class="col-10 flex align-items-center">
+                    <input type="number" class="form-control" id="media" placeholder="3, por exemplo">
+                  </div>
+                  <div class="col-12 invalid-feedback">Mensagem de Erro</div>
+                </div>
+
+                <!-- Desvio padrão -->
+
+                <div class="form-group row">
+                  <small class="flex align-items-center form-text text-muted col-12">
+                    Preencha o desvio padrão
+                    <a tabindex="0" class="popover-dismiss material-icons" role="button" data-toggle="popover" data-trigger="focus" data-content="O desvio padrão é o resultado da raiz quadrada positiva da variância e representa a dispersão dos dados em torno da média.">info</a>
+                  </small>
+                  <label for="desvioPadrao" class="col-2 col-form-label">\( \sigma = \)</label>
+                  <div class="col-10 flex align-items-center">
+                    <input type="number" class="form-control" id="desvioPadrao" placeholder="4, por exemplo">
+                  </div>
+                  <div class="col-12 invalid-feedback">Mensagem de Erro</div>
+                </div>
+
+                <!-- x -->
+
+                <div class="form-group row">
+                  <small class="flex align-items-center form-text text-muted col-12">
+                    Preencha a variável aleatória
+                    <a tabindex="0" class="popover-dismiss material-icons" role="button" data-toggle="popover" data-trigger="focus" data-content="A variável aleatória é uma variável quantitativa, cujo resultado depende de fatores aleatórios.">info</a>
+                  </small>
+                  <label for="desvioPadrao" class="col-2 col-form-label">\( X = \)</label>
+                  <div class="col-10 flex align-items-center">
+                    <input type="number" class="form-control" id="valorDeX" placeholder="5, por exemplo">
+                  </div>
+                  <div class="col-12 invalid-feedback">Mensagem de Erro</div>
+                </div>
+
+              </div>
+              <div class="modal-footer navegacao">
+                <button type="button" class="btn btn-outline-primary btnCancelar" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary flex-grow-1 flex-md-grow-0 btnDadosZ" data-dismiss="modal" data-toggle="modal" data-target="#calcularZ" id = "calculaZ">Calcular Z</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preciso Calcular Z -> Calcular Z -->
+
+        <div class="modal fade" id="calcularZ" tabindex="-1" role="dialog" aria-labelledby="calcularZ" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group row">
+                  <label for="z"  class="col-2 col-form-label">\( Z = \)</label>
+                  <div class="col-10 flex align-items-center" id = "zLabel">????</div>
+                  <div class="col-12 invalid-feedback">Mensagem de Erro</div>
+                </div>
+              </div>
+              <div class="modal-footer navegacao">
+                <button type="button" class="btn btn-outline-primary btnCalculoZ" data-dismiss="modal" data-toggle="modal" data-target="#precisoCalcularZ">Recalcular Z</button>
+                <button id = "zCalculado" type="button" class="btn btn-primary flex-grow-1 flex-md-grow-0 btnResultado" data-dismiss="modal" >Encontrar Z na Tabela</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Já tenho Z -->
+
+        <div class="modal fade" id="jaTenhoZ" tabindex="-1" role="dialog" aria-labelledby="jaTenhoZ" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group row">
+                  <small class="flex align-items-center form-text text-muted col-12">
+                    Preencha a Distribução Normal padronizada
+                    <a tabindex="0" class="popover-dismiss material-icons" role="button" data-toggle="popover" data-trigger="focus" data-content="é a distribuição de probabilidade apresentada por uma variável aleatória com média igual a zero e variância igual a um.">info</a>
+                  </small>
+                  <label for="z" class="col-2 col-form-label">\( Z = \)</label>
+                  <div class="col-10 flex align-items-center">
+                    <input type="number" class="form-control" id="z" placeholder="2.156, por exemplo">
+                  </div>
+                  <div class="col-12 invalid-feedback">Mensagem de Erro</div>
+                </div>
+              </div>
+              <div class="modal-footer navegacao">
+                <button type="button" class="btn btn-outline-primary btnCancelar" data-dismiss="modal">Cancelar</button>
+                <button type="button" id = "zPreenchido" class="btn btn-primary flex-grow-1 flex-md-grow-0 btnResultado" data-dismiss="modal">Encontrar Z na Tabela</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Casos detalhados -->
+
+        <div class="modal fade" id="casosDetalhados" tabindex="-1" role="dialog" aria-labelledby="Casos detalhados" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:800px!important">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ol style="list-style:lower-latin;">
+                  <!-- Caso a -->
+                  <li>
+                    <b>Quando se quer conhecer \(P (Z>z)\).</b>
+                    <p>Se \(p(Z>z) = 0,75\) equivale a \(0,2734\); Logo, \(p(Z>z) = 0,5 - 0,2734 = 0,2266\).</p>
+                    <img src="assets/m1.png">
+                    <p>Se \(p(-Z>z) = -3\) equivale a \(0,4987\); Logo, \(p(-Z>z) = 0,5 + 0,4987 = 0,9987\).</p>
+                    <img src="assets/m2.png">
+                  </li>
+                  <!-- Caso b -->
+                  <li>
+                    <b>Quando se quer conhecer \(p(Z  < z)\).</b>
+                    <p>Se \(p(Z< z) = 0,75\) equivale a \(0,2734\); Logo, \(p(Z < z) = 0,5 + 0,2734 = 0,7734\).</p>
+                    <img src="assets/m3.png">
+                    <p>Se \(p(Z< -z) = -3\) equivale a 0,4987; Logo, \(p(Z< -z) = 0,5 - 0,4987 = 0,0013\).</p>
+                    <img src="assets/m4.png">
+                  </li>
+                  <!-- Caso c -->
+                  <li>
+                    <b>Quando se quer conhecer \(p(-z < Z < z)\)</b>
+                    <p>Se \(p(-z) = -3\) equivale a \(0,4987\) e \(p(z) = 0,75\) equivale a \(0,2734\); Logo, \(p(-z < Z < z) = 0,4987 + 0,2734 = 0,7721\).</p>
+                    <img src="assets/m5.png">
+                  </li>
+                  <!-- Caso d -->
+                  <li>
+                    <b>Quando se quer conhecer \(p(z_0 < Z < z_1 )\)</b>
+                    <p>Se \( p(z_0 ) = 0,75\) equivale a \(0,2734\) e \(p(z_1) = 2,67\) equivale a \(0,4962\); Logo, \(p(z_0 < Z < z_1 ) = 0,4962 - 0,2734 = 0,2228\)</p>
+                    <img src="assets/m6.png">
+                  </li>
+                </ol>
+              </div>
+              <div class="modal-footer navegacao">
+                <button type="button" class="btn btn-outline-primary btnCancelar" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIM DOS MODAIS -->
+
+
+
+        <!-- INÍCIO DO RESULTADO -->
+
+        <div class="secao row d-none col-12" id="resultado">
+
+          <!-- Infos inputadas e navegação -->
+
+          <div class="flex flex-column align-items-between justify-content-between flex-grow-0 col-12 col-lg-3 infos">
+            <div>
+              <h5>\( Z = \)<span id = "spanZ">2156<span></h5>
+              <div class="navegacao flex flex-wrap justify-content-lg-start" style="margin-bottom:2rem">
+                <button type="button" class="btn btn-primary flex-grow-1 flex-lg-grow-0 btnCalculoZ" data-toggle="modal" data-target="#precisoCalcularZ" id = "recalcular">Recalcular Z</button>
+                <button type="button" class="btn btn-primary flex-grow-1 flex-lg-grow-0 btnDadosZ" data-toggle="modal" data-target="#jaTenhoZ" id = "alteraZ">Alterar Z</button>
+              </div>
+              <div class="d-print-flex flex flex-lg-column align-items-start">
+                <img src="assets/grafico1.png" class="d-none d-lg-block d-print-block" id = 'grafico' style="width:80%;">
+                <small class="form-text text-muted">
+                  O valor da área total do gráfico equivale a 1 (100%). Logo, sua metade, que é simétrica, equivale a 0,5 (50%). Para um mesmo valor de Z obtido na tabela da distribuição normal padronizada, o resultado final da probabilidade poderá variar dependendo da informação que se deseja buscar.<a class="btn btn-link d-print-none" data-toggle="modal" data-target="#casosDetalhados" style="color:#d7586f;font-weight:bold;text-decoration:underline">Veja os casos detalhados</a>
+                </small>
+              </div>
+            </div>
+            <div class="navegacao d-none d-lg-block" style="margin-top:1rem">
+              <button type="button" class="btn btn-outline-primary flex-grow-1 flex-lg-grow-0 btnVoltar">Voltar ao início</button>
+            </div>
+          </div>
+
+          <!-- Navegação na tabela -->
+
+          <div class="order-lg-2 float-right flex-grow-0 col-12 col-lg-2">
+            <div class="flex align-items-end flex-lg-column justify-content-between justify-content-lg-start flex-lg-grow-1 d-print-none div-thumb">
+
+              <!-- Z e Gráfico para Mobile -->
+
+              <div class="flex flex-column justify-content-between align-items-between align-self-stretch d-lg-none">
+                <img src="assets/grafico1.png" class="d-lg-none" style="max-width:80%;height:auto;margin-top:1rem">
+                <div class='flex flex-nowrap d-print-none'>
+                  <h6  class="row-resultado">21</h6>
+                  <h6  class="col-resultado">56</h6>
+                </div>
+              </div>
+
+              <!-- Thumb Tabela -->
+
+              <div class="flex flex-lg-column align-items-end">
+                <a href="assets/appsunivesp_tabelanormal.pdf" target="_blank" class="btn btn-link text-right order-0 order-lg-1"><small class="text-muted">Salvar tabela<br/> completa</small></a>
+                <div class="tabela-thumb order-1 order-lg-0">
+                  <img src="assets/tabela-normal.jpg" alt="" id = "mapinha">
+                  <div class="localizador"></div>
+                </div>
+              </div>
+
+              <!-- Salvar resultado (para desktop) -->
+
+              <div class=" d-none d-lg-flex navegacao flex-column flex-wrap align-items-center d-print-none" style="margin-top:0; margin-bottom:0">
+                <img src="assets/tabela-normal_ilustra2v3.png" width=100 style="transform:translateY(25px);z-index:-1;margin-top:.75rem">
+                <button type="button" class="btn btn-primary btnPrint" style="margin-bottom:0" onClick="print()">Salvar resultado</button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Tabela -->
+
+          <div class="flex-grow-1 tabela-normal order-lg-1 col-12 col-lg-7" style="position:relative">
+
+              <!-- Cabeçalho -->
+
+              <div class="flex justify-content-between align-items-center">
+                <div class='flex-nowrap d-none d-lg-flex d-print-none'>
+                  <h6 class="row-resultado">21</h6>
+                  <h6 class="col-resultado">56</h6>
+                </div>
+                <i class="material-icons btnPosicaoOriginal d-print-none" id = "reencontrar">my_location</i>
+              </div>
+
+              <!-- Table -->
+
+              <div id = 'tabelaScroll' class="tabela">
+                <table id = "tabela">
+                  <thead>
+                    <tr>
+                      <th class="cell-resultado">Z</th>
+                      <th id = 'colunaRef'>0</th>
+                      <th>0.01</th>
+                      <th>0.02</th>
+                      <th>0.03</th>
+                      <th>0.04</th>
+                      <th>0.05</th>
+                      <th>0.06</th>
+                      <th>0.07</th>
+                      <th>0.08</th>
+                      <th>0.09</th>
+                    </tr>
+                  </thead>
+                  <tbody id="body">
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+
+          <!-- Voltar ao início e Ilustra (para mobile) -->
+          <div class="d-lg-none text-center col-12" style="margin-top:2rem;">
+            <div class="navegacao">
+              <button type="button" class="btn btn-outline-primary btn-block flex-grow-1 flex-lg-grow-0 btnVoltar">Voltar ao início</button>
+            </div>
+            <img src="assets/tabela-normal_ilustra2v3.png" class="ilustra-final d-lg-none" style="margin:auto;transform:translateY(60px);z-index:-1;width:100px">
+          </div>
+
+        </div>
+
+      </div><!-- row -->
+    </div><!-- container -->
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="container flex justify-content-between align-items-center">
+
+      <div class="cred-rea">
+
+        <!-- Comente em caso de adaptação do REA -->
+        <p>
+          <span>Recurso Educacional Aberto (REA) desenvolvido pela <a href="https://univesp.br/" target="blank">Univesp</a>, disponível sob licença <a href="http://apps.univesp.br/common/license_MIT_2019.txt" target="_blank">MIT</a>.
+          Você pode utilizá-lo, compartilhá-lo e modificá-lo.</span>
+          <span><button class="btn btn-link" data-toggle="modal" data-target="#creditos">Créditos</button></span>
+          <span><a href="http://github.com/univesp/o-normal-assusta" target="_blank" aria-label="GitHub">GitHub <i class="fab fa-github"></i></a></span>.
+        <p>
+        <!-- Descomente em caso de adaptação do REA -->
+        <!-- <p>
+          <span>Recurso Educacional Aberto (REA) adaptado por SEU NOME.</span>
+          <span><a href="#">Versão original da Univesp</a></span>
+        </p> -->
+      </div>
+
+      <div class="aval-rea flex">
+        <!-- Atualizar "Nome+do+Recurso" -->
+        <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSfNUGr4_pujefUE-NdXlmxf6W1rBiD1jKyEdYo8P7X9THpuOw/viewform?usp=pp_url&entry.542052009=O+Normal+Assusta?" target="_blank">Avaliar este recurso</a>
+        <!-- Atualizar "Nome+do+Recurso" -->
+        <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSezsI7mJs3XrlIB0sIOzVtWsOIffADRpLC3CJMlyDzZJvvfog/viewform?usp=pp_url&entry.1523910789=O+Normal+Assusta?" target="_blank">Reportar erro</a>
+      </div>
+
+    </div>
+  </footer>
+  <!-- Fim do rodapé -->
+
+  <!-- Créditos -->
+  <div class="modal fade" id="creditos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+
+          <h6>Governo do Estado de São Paulo</h6>
+          <p>Secretaria de Desenvolvimento Econômico</p>
+
+          <h6>UNIVERSIDADE VIRTUAL DO ESTADO DE SÃO PAULO – UNIVESP</h6>
+          <p><span class="funcao">Presidente</span>Rodolfo Jardim de Azevedo</p>
+          <p><span class="funcao">Diretora Acadêmica</span>Simone Telles Martins Ramos</p>
+
+          <h6>Equipe</h6>
+          <p><span class="funcao">Docente responsável</span>Richardson Barbosa Gomes da Silva</p>
+          <p><span class="funcao">Coordenação</span>Édison Trombeta</p>
+          <p><span class="funcao">Roteirização e Design Instrucional</span>Alfredo S.V. Coelho e Nádia Rubio Pirillo</p>
+          <p><span class="funcao">Ilustração</span>Francesco Micieli</p>
+          <p><span class="funcao">Layout</span>Graciela Tocchetto</p>
+          <p><span class="funcao">Programação</span>Alberto Mendes Ortiz e Bruna Garabito</p>
+
+        </div>
+        <div class="modal-footer">
+          <p>Maio/2019</p>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arquivos Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://apps.univesp.br/common/jquery-ui-touch-punch.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  <!-- jsSocials -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+  <script>
+  var share = $("#share-buttons");
+  var page_title = $(document).attr('title');
+  var page_url = window.location.href;
+  share.jsSocials({
+    shares: [
+      {
+        share: "facebook",
+        label: "Facebook",
+        logo: "fab fa-facebook-f",
+      },
+      {
+        share: "twitter",
+        label: "Twitter",
+        logo: "fab fa-twitter",
+      },
+      {
+        share: "whatsapp",
+        label: "Whatsapp",
+        logo: "fab fa-whatsapp",
+      },
+    ],
+    url: page_url,
+    text: 'Confira o REA ' + page_title + '.',
+    showLabel: true,
+    showCount: false,
+    shareIn: "popup",
+  });
+  </script>
+
+  <!-- Custom JS -->
+  <script type="text/javascript" src="javascripts/events.js"></script>
+  <script type="text/javascript" src="javascripts/events_tabela.js"></script>
+
+  <!-- MathJax. Descomente se for utilizar. Caso contrário, remova. -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- Analytics. Remova em caso de reutilização do REA -->
+  <script src="https://apps.univesp.br/common/analytics.js"></script>
+
+</body>
+
+</html>
