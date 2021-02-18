@@ -329,7 +329,6 @@ function animaCelula(linha, coluna, anima) {
 
 
 function validacao() {
-  //console.log(this.value);
 }
 
 function limpaTabela() {
